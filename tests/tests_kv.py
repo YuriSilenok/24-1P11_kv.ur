@@ -61,7 +61,7 @@ class TestKv(unittest.TestCase):
         self.assertEqual(res[1], x)
 
     def test_5(self):
-        """Тест все переменные равны нулю"""
+        """Тест прямая совпадает с осью Ox"""
         a, b, c = 0, 0, 0
         res = cvyr(a, b, c)
         self.assertEqual(len(res), 2, "Неверное количество элементов")
