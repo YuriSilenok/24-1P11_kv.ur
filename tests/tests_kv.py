@@ -59,3 +59,16 @@ class TestKv(unittest.TestCase):
             "Линейное уравнение, прямая пересекает ось Оx"
         )
         self.assertEqual(res[1], x)
+
+    def test_5(self):
+        """Тест все переменные равны нулю"""
+        a, b, c = 0, 0, 0
+        res = cvyr(a, b, c)
+        self.assertEqual(len(res), 4, "Неверное количество элементов")
+        self.assertEqual(
+            res[0],
+            "Бесконечное множество решений (тождество 0 = 0)"
+        )
+        self.assertEqual(res[1], a)
+        self.assertEqual(res[2], b)
+        self.assertEqual(res[3], c)
