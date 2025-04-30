@@ -1,0 +1,40 @@
+"""Тест FastAPI"""
+
+import unittest
+from fastapi.testclient import TestClient
+from app import app
+
+
+class TestQuadraticEquationAPI(unittest.TestCase):
+    "Тест FastAPI"
+
+    def setUp(self):
+        """Обращение"""
+        self.client = TestClient(app)
+
+    def test_kvyr_endpoint(self):
+        """Тест с корректными параметрами"""
+        response = self.client.get("/kvyr", params={"a": 1, "b": 5, "c": 6})
+        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.json(), {"a": 1, "b": 5, "c": 6})
+
+    def test_kvyr_endpoint_missing_params(self):
+        """Тест с отсутствующими параметрами"""
+        response = self.client.get("/kvyr")
+        self.assertEqual(response.status_code, 422)
+
+        response = self.client.get("/kvyr", params={"a": 1, "b": 2})
+        self.assertEqual(response.status_code, 422)
+
+    def test_kvyr_endpoint_invalid_params(self):
+        """Тест с неверными типами параметров"""
+        response = self.client.get("/kvyr", params={
+            "a": "text",
+            "b": 2,
+            "c": 3
+        })
+        self.assertEqual(response.status_code, 422)
+
+
+if __name__ == "__main__":
+    unittest.main()
