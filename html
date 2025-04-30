@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Форма с выводом значений</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 500px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .output {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Форма ввода данных</h2>
+
+<form id="myForm">
+    <p>
+        a: <input type="text" id="fieldA" name="a">
+    </p>
+    <p>
+        b: <input type="text" id="fieldB" name="b">
+    </p>
+    <p>
+        c: <input type="text" id="fieldC" name="c">
+    </p>
+    <button type="button" onclick="showValues()">Показать значения</button>
+</form>
+
+<div id="output" class="output">
+    Здесь будут показаны введённые значения
+</div>
+
+<script>
+function showValues() {
+    // Получаем значения из полей ввода
+    const a = document.getElementById('fieldA').value;
+    const b = document.getElementById('fieldB').value;
+    const c = document.getElementById('fieldC').value;
+    
+    // Формируем текст для вывода
+    const outputText = `
+        Введённые значения:<br>
+        a = ${a}<br>
+        b = ${b}<br>
+        c = ${c}
+    `;
+    
+    // Выводим результат
+    document.getElementById('output').innerHTML = outputText;
+}
+</script>
+
+</body>
+</html>
