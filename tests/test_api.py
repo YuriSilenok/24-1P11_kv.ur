@@ -14,12 +14,13 @@ class TestKvYrAPI(unittest.TestCase):
 
     def test_1(self):
         """Дискриминант меньше нуля, корней нет"""
-        params = {"a": 1, "b": 2, "c": 5}
+        params = {"a": 1, "b": 2, "c": 1}
+        x = -1
         response = self.client.get("/KvYr", params=params)
         self.assertEqual(response.status_code, 200)
         data = response.json()
         self.assertEqual(
             data[0],
-            "Дискриминант меньше нуля, квадратное уравнение не имеет корней"
+            "Дискриминант = 0, квадратное уравнение имеет 1 корень"
         )
-        self.assertEqual(data[1], 0)
+        self.assertEqual(data[1], x)
