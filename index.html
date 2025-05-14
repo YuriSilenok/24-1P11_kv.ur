@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Калькулятор чисел</title>
+</head>
+<body>
+    <h1>Введите числа для подсчёта</h1>
+    
+    <form action="/calculate" method="post">
+        <label for="numbers">Числа (через запятую):</label><br>
+        <input type="text" id="numbers" name="numbers" value="1,2,3,4,5"><br><br>
+        
+        <input type="submit" value="Посчитать">
+    </form>
+    
+    <div id="result">
+        {% if result %}
+        <h2>Результат: {{ result }}</h2>
+        {% endif %}
+    </div>
+</body>
+</html>
