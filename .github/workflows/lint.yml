@@ -41,3 +41,9 @@ jobs:
       run: |
         echo "Running pylint..."
         pylint $(find . -name "*.py" ! -path "./venv/*")
+
+    - name: Install tidy
+      run: sudo apt-get install tidy
+
+    - name: Check HTML with tidy
+      run: find . -name "*.html" -print0 | xargs -0 -n 1 tidy -qe || exit 1
