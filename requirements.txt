@@ -1,2 +1,4 @@
+fastapi
 flake8
 pylint
+httpx
